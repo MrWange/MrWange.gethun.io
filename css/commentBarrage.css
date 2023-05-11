@@ -42,8 +42,6 @@
     0% {
         transform: scale(0.1);
     }
-
-    ,
     100% {
         transform: scale(1.0);
     }
@@ -89,9 +87,3 @@
     --lyx-white-acrylic2:#fffa;
     --lyx-black-acrylic2: #000a;
 }
-
-
-作者: Ariasaka
-链接: https://yisous.xyz/posts/69707535/#post-comment
-来源: Ariasakaの小窝
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
