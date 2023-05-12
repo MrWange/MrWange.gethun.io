@@ -54,6 +54,31 @@
     
     
     <entry>
+      <title>vuex学习笔记</title>
+      <link href="/2023/05/10/vuex%E5%AD%A6%E4%B9%A0/"/>
+      <url>/2023/05/10/vuex%E5%AD%A6%E4%B9%A0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h1><p>能够在vuex中集中管理共享的数据，易于开发和后期维护<br>能够高效的实现组件之间的数据共享，提高开发效率<br>存储在vuex中的数据都是响应式的，能够实时保持数据与页面的同步<br>什么样的数据适合存储到Vuex中<br>一般情况下，<wavy>只有组件之间共享的数据</wavy>，才有必要存储到vuex中；对于组件中的私有数据，<wavy>依旧存储在组件自身的data中即可</wavy></p><h1 id="vuex的基本使用"><a href="#vuex的基本使用" class="headerlink" title="vuex的基本使用"></a>vuex的基本使用</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vuex --save</span><br></pre></td></tr></table></figure><h2 id="导入vuex包"><a href="#导入vuex包" class="headerlink" title="导入vuex包"></a>导入vuex包</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import Vuex from &#x27;vuex&#x27;</span><br><span class="line">Vue.use(Vuex)</span><br></pre></td></tr></table></figure><h2 id="创建store对象"><a href="#创建store对象" class="headerlink" title="创建store对象"></a>创建store对象</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const store =new Vuex.store(&#123;</span><br><span class="line">//state中存放的就是全局共享的数据</span><br><span class="line">state:&#123;count:0&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h2 id="将store对象挂载到vue实例中"><a href="#将store对象挂载到vue实例中" class="headerlink" title="将store对象挂载到vue实例中"></a>将store对象挂载到vue实例中</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">el: &#x27;#app&#x27;,</span><br><span class="line">render: h =&gt; h(app),</span><br><span class="line">router,</span><br><span class="line">//将创建的共享数据对象，挂载到Vue实例中</span><br><span class="line">//所有的组件，就可以直接从store中获取全局的数据了</span><br><span class="line">store</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h1 id="vuex中的主要核心概念"><a href="#vuex中的主要核心概念" class="headerlink" title="vuex中的主要核心概念"></a>vuex中的主要核心概念</h1><div class="tabs" id="vuex属性"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#vuex属性-1">state</button></li><li class="tab"><button type="button" data-href="#vuex属性-2">Mutation</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="vuex属性-1"><h2 id="state"><a href="#state" class="headerlink" title="state"></a>state</h2><p><strong>提供唯一的公共数据源，所有共享的数据都要统一放到store的state中进行存储</strong><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//创建store数据源，提供唯一的公告数据</span><br><span class="line">const　store　＝　new　Vuex.Store(&#123;</span><br><span class="line">  state:&#123; count: 0 &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p><details class="folding-tag" green><summary> 组件访问state中数据的第一种方式 </summary>              <div class='content'>              <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$store.state.全局数据名称</span><br></pre></td></tr></table></figure>              </div>            </details><details class="folding-tag" green><summary> 组件访问state中数据的第二中种方式 </summary>              <div class='content'>              <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//1.从vuex中按需导入mapState函数</span><br><span class="line">import &#123; mapState &#125; from &#x27;vuex&#x27;</span><br></pre></td></tr></table></figure><p>通过刚才导入的mapState函数，将当前组件需要的全局数据，映射为当前组件的computed计算属性</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//2.将全局数据，映射为当前组件的计算属性</span><br><span class="line">computed: &#123;</span><br><span class="line">    ...mapState([&#x27;count&#x27;])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>              </div>            </details><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="vuex属性-2"><h2 id="Mutation"><a href="#Mutation" class="headerlink" title="Mutation"></a>Mutation</h2><p><strong>用于变更Store中的数据</strong><br><strong>只能通过Mutation变更store数据，不可以直接操作store中的数据</strong><br><strong>通过这种方式虽然操作起来稍微繁琐一些，但是可以集中监控所有的数据变化</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//定义Mutation</span><br><span class="line">const store = new Vuex.Store(&#123;</span><br><span class="line">  state:&#123;</span><br><span class="line">    count: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations:&#123;</span><br><span class="line">    add(state)&#123;</span><br><span class="line">      //变更状态</span><br><span class="line">      state.count++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><details class="folding-tag" green><summary> 触发mutations的第一种方式 </summary>              <div class='content'>              <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//触发mutation</span><br><span class="line">methods:&#123;</span><br><span class="line">  handlel()&#123;</span><br><span class="line">    //触发mutations的第一种方式</span><br><span class="line">    this.$store.commit(&#x27;add&#x27;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>可以在触发mutations时传递参数<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//定义Mutation</span><br><span class="line">const store = new Vuex.Store(&#123;</span><br><span class="line">  state:&#123;</span><br><span class="line">    count: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations:&#123;</span><br><span class="line">    addN(state,step)&#123;</span><br><span class="line">      //变更状态</span><br><span class="line">      state.count += step</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//触发mutation</span><br><span class="line">methods:&#123;</span><br><span class="line">  handlel2()&#123;</span><br><span class="line">    //触发mutations的第一种方式</span><br><span class="line">    this.$store.commit(&#x27;addN&#x27;,3)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>              </div>            </details><details class="folding-tag" green><summary> 触发mutation的第二种方式 </summary>              <div class='content'>              <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//1.从vuex中按需导入mapMutations函数</span><br><span class="line">import &#123; mapMutations &#125; from &#x27;vuex&#x27;</span><br></pre></td></tr></table></figure><p>通过刚才导入的mapMutations函数，将需要的mutations函数<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//2.将指定的mutations函数，映射为当前组件的methods函数</span><br><span class="line">methods:&#123;</span><br><span class="line">  ...mapMutations([&#x27;add&#x27;,&#x27;addN&#x27;])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>              </div>            </details><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div><h2 id="action"><a href="#action" class="headerlink" title="action"></a>action</h2><h2 id="getter"><a href="#getter" class="headerlink" title="getter"></a>getter</h2><h1 id="遇见的问题"><a href="#遇见的问题" class="headerlink" title="遇见的问题"></a>遇见的问题</h1><div class="tip ban"><p>Newline required at end of file but not found eol-last</p></div><p>还是vue项目中代码格式 的原因导致的以下错误：<br><div class="img-wrap"><div class="img-bg"><img class="img" src="https://pic-bed-img.aotuji.cn/img/err_1.png"/></div></div><br>原因：最后一行需要留空白<br>即以下解决方式：<br><div class="img-wrap"><div class="img-bg"><img class="img" src="https://pic-bed-img.aotuji.cn/img/err_2.png"/></div></div><br> 即便是最后一行不写也得留出一行空白。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 编程学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>日常的生活</title>
       <link href="/2023/05/10/%E6%97%A5%E5%B8%B8%E7%9A%84%E7%94%9F%E6%B4%BB-1/"/>
       <url>/2023/05/10/%E6%97%A5%E5%B8%B8%E7%9A%84%E7%94%9F%E6%B4%BB-1/</url>
@@ -104,31 +129,6 @@
     
     
     <entry>
-      <title>胡思乱想</title>
-      <link href="/2023/05/10/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3-1/"/>
-      <url>/2023/05/10/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3-1/</url>
-      
-        <content type="html"><![CDATA[<h2 id="html的标签很重要的"><a href="#html的标签很重要的" class="headerlink" title="html的标签很重要的"></a>html的标签很重要的</h2>]]></content>
-      
-      
-      <categories>
-          
-          <category> 胡思乱想 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 胡思乱想 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>什么叫C#</title>
       <link href="/2023/05/10/%E4%BB%80%E4%B9%88%E5%8F%ABC/"/>
       <url>/2023/05/10/%E4%BB%80%E4%B9%88%E5%8F%ABC/</url>
@@ -146,6 +146,31 @@
         <tags>
             
             <tag> 什么叫C# </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>胡思乱想</title>
+      <link href="/2023/05/10/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3-1/"/>
+      <url>/2023/05/10/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3-1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="html的标签很重要的"><a href="#html的标签很重要的" class="headerlink" title="html的标签很重要的"></a>html的标签很重要的</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> 胡思乱想 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 胡思乱想 </tag>
             
         </tags>
       
