@@ -4,6 +4,131 @@
   
     
     <entry>
+      <title>uni-app的小知识</title>
+      <link href="/2023/05/29/uni-app%E7%9A%84%E5%B0%8F%E7%9F%A5%E8%AF%86/"/>
+      <url>/2023/05/29/uni-app%E7%9A%84%E5%B0%8F%E7%9F%A5%E8%AF%86/</url>
+      
+        <content type="html"><![CDATA[<h1 id="uniapp微信小程序隐藏右上角胶囊"><a href="#uniapp微信小程序隐藏右上角胶囊" class="headerlink" title="uniapp微信小程序隐藏右上角胶囊"></a>uniapp微信小程序隐藏右上角胶囊</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;navigationBarRightButton&quot;: &#123;</span><br><span class="line">      &quot;hide&quot;: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><div class="img-wrap"><div class="img-bg"><img class="img" src="https://pic-bed-img.aotuji.cn/img/uni-app-jiaonang.png"/></div></div><h1 id="uniapp发布H5，去掉标题栏"><a href="#uniapp发布H5，去掉标题栏" class="headerlink" title="uniapp发布H5，去掉标题栏"></a>uniapp发布H5，去掉标题栏</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;navigationStyle&quot;: &quot;custom&quot;,</span><br></pre></td></tr></table></figure><div class="img-wrap"><div class="img-bg"><img class="img" src="https://pic-bed-img.aotuji.cn/img/uni-app-title.png"/></div></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 编程学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>我的JS方法</title>
+      <link href="/2023/05/29/%E6%88%91%E7%9A%84JS%E6%96%B9%E6%B3%95/"/>
+      <url>/2023/05/29/%E6%88%91%E7%9A%84JS%E6%96%B9%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h1 id="时间处理方法"><a href="#时间处理方法" class="headerlink" title="时间处理方法"></a>时间处理方法</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">const user = &#123;</span><br><span class="line">// 时间间隔函数</span><br><span class="line">getTimeAgo:function(date) &#123;</span><br><span class="line">  const ONE_SECOND = 1000;</span><br><span class="line">  const ONE_MINUTE = ONE_SECOND * 60;</span><br><span class="line">  const ONE_HOUR = ONE_MINUTE * 60;</span><br><span class="line">  const ONE_DAY = ONE_HOUR * 24;</span><br><span class="line">  const ONE_WEEK = ONE_DAY * 7;</span><br><span class="line"></span><br><span class="line">  const now = new Date().getTime();</span><br><span class="line">  const diff = now - date.getTime();</span><br><span class="line"></span><br><span class="line">  if (diff &lt; ONE_MINUTE) &#123; // 不足1分钟</span><br><span class="line">    return `$&#123;Math.floor(diff / ONE_SECOND)&#125;秒前`;</span><br><span class="line">  &#125; else if (diff &lt; ONE_HOUR) &#123; // 不足1小时</span><br><span class="line">    return `$&#123;Math.floor(diff / ONE_MINUTE)&#125;分钟前`;</span><br><span class="line">  &#125; else if (diff &lt; ONE_DAY) &#123; // 不足1天</span><br><span class="line">    return `$&#123;Math.floor(diff / ONE_HOUR)&#125;小时前`;</span><br><span class="line">  &#125; else if (diff &lt; ONE_WEEK) &#123; // 不足7天</span><br><span class="line">    return `$&#123;Math.floor(diff / ONE_DAY)&#125;天前`;</span><br><span class="line">  &#125; else &#123; // 大于等于7天</span><br><span class="line">    const year = date.getFullYear();</span><br><span class="line">    let month = date.getMonth() + 1;</span><br><span class="line">    let day = date.getDate();</span><br><span class="line">    month = month &lt; 10 ? &#x27;0&#x27; + month : month;</span><br><span class="line">    day = day &lt; 10 ? &#x27;0&#x27; + day : day;</span><br><span class="line">    return `$&#123;year&#125;-$&#123;month&#125;-$&#123;day&#125;`;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">// const date = new Date(&#x27;2022-11-11 00:00:00&#x27;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">export default user // 导出</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 编程学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ES6数组操作</title>
+      <link href="/2023/05/29/ES6%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/"/>
+      <url>/2023/05/29/ES6%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/</url>
+      
+        <content type="html"><![CDATA[<h1 id="ES6新增新操作数组的方法"><a href="#ES6新增新操作数组的方法" class="headerlink" title="ES6新增新操作数组的方法"></a>ES6新增新操作数组的方法</h1><h2 id="find-："><a href="#find-：" class="headerlink" title="find()："></a>find()：</h2><p>传入一个回调函数，找到数组中符合当前搜索规则的第一个元素，返回它，并且终止搜索。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, &quot;2&quot;, 3, 3, &quot;2&quot;]</span><br><span class="line">console.log(arr.find(n =&gt; typeof n === &quot;number&quot;)) // 1</span><br></pre></td></tr></table></figure></p><h2 id="findIndex-："><a href="#findIndex-：" class="headerlink" title="findIndex()："></a>findIndex()：</h2><p>传入一个回调函数，找到数组中符合当前搜索规则的第一个元素，返回它的下标，终止搜索。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, &quot;2&quot;, 3, 3, &quot;2&quot;]</span><br><span class="line">console.log(arr.findIndex(n =&gt; typeof n === &quot;number&quot;)) // 0</span><br></pre></td></tr></table></figure></p><h2 id="fill-："><a href="#fill-：" class="headerlink" title="fill()："></a>fill()：</h2><p>用新元素替换掉数组内的元素，可以指定替换下标范围。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.fill(value, start, end)</span><br></pre></td></tr></table></figure></p><h2 id="copyWithin-："><a href="#copyWithin-：" class="headerlink" title="copyWithin()："></a>copyWithin()：</h2><p>选择数组的某个下标，从该位置开始复制数组元素，默认从0开始复制。也可以指定要复制的元素范围。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">arr.copyWithin(target, start, end)</span><br><span class="line">const arr = [1, 2, 3, 4, 5]</span><br><span class="line">console.log(arr.copyWithin(3))</span><br><span class="line"> // [1,2,3,1,2] 从下标为3的元素开始，复制数组，所以4, 5被替换成1, 2</span><br><span class="line">const arr1 = [1, 2, 3, 4, 5]</span><br><span class="line">console.log(arr1.copyWithin(3, 1)) </span><br><span class="line">// [1,2,3,2,3] 从下标为3的元素开始，复制数组，指定复制的第一个元素下标为1，所以4, 5被替换成2, 3</span><br><span class="line">const arr2 = [1, 2, 3, 4, 5]</span><br><span class="line">console.log(arr2.copyWithin(3, 1, 2)) </span><br><span class="line">// [1,2,3,2,5] 从下标为3的元素开始，复制数组，指定复制的第一个元素下标为1，结束位置为2，所以4被替换成2</span><br></pre></td></tr></table></figure></p><h2 id="from"><a href="#from" class="headerlink" title="from"></a>from</h2><p>将类似数组的对象（array-like object）和可遍历（iterable）的对象转为真正的数组<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const bar = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;];</span><br><span class="line">Array.from(bar);</span><br><span class="line">// [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</span><br><span class="line"> </span><br><span class="line">Array.from(&#x27;foo&#x27;);</span><br><span class="line">// [&quot;f&quot;, &quot;o&quot;, &quot;o&quot;]</span><br></pre></td></tr></table></figure></p><h2 id="of"><a href="#of" class="headerlink" title="of"></a>of</h2><p>用于将一组值，转换为数组。这个方法的主要目的，是弥补数组构造函数 Array() 的不足。因为参数个数的不同，会导致 Array() 的行为有差异。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Array() // []</span><br><span class="line">Array(3) // [, , ,]</span><br><span class="line">Array(3, 11, 8) // [3, 11, 8]</span><br><span class="line">Array.of(7);       // [7]</span><br><span class="line">Array.of(1, 2, 3); // [1, 2, 3]</span><br><span class="line"> </span><br><span class="line">Array(7);          // [ , , , , , , ]</span><br><span class="line">Array(1, 2, 3);    // [1, 2, 3]</span><br></pre></td></tr></table></figure></p><h2 id="entries-返回迭代器：返回键值对"><a href="#entries-返回迭代器：返回键值对" class="headerlink" title="entries() 返回迭代器：返回键值对"></a>entries() 返回迭代器：返回键值对</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//数组</span><br><span class="line">const arr = [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;];</span><br><span class="line">for(let v of arr.entries()) &#123;</span><br><span class="line">  console.log(v)</span><br><span class="line">&#125;</span><br><span class="line">// [0, &#x27;a&#x27;] [1, &#x27;b&#x27;] [2, &#x27;c&#x27;]</span><br><span class="line"> </span><br><span class="line">//Set</span><br><span class="line">const arr = new Set([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);</span><br><span class="line">for(let v of arr.entries()) &#123;</span><br><span class="line">  console.log(v)</span><br><span class="line">&#125;</span><br><span class="line">// [&#x27;a&#x27;, &#x27;a&#x27;] [&#x27;b&#x27;, &#x27;b&#x27;] [&#x27;c&#x27;, &#x27;c&#x27;]</span><br><span class="line"> </span><br><span class="line">//Map</span><br><span class="line">const arr = new Map();</span><br><span class="line">arr.set(&#x27;a&#x27;, &#x27;a&#x27;);</span><br><span class="line">arr.set(&#x27;b&#x27;, &#x27;b&#x27;);</span><br><span class="line">for(let v of arr.entries()) &#123;</span><br><span class="line">  console.log(v)</span><br><span class="line">&#125;</span><br><span class="line">// [&#x27;a&#x27;, &#x27;a&#x27;] [&#x27;b&#x27;, &#x27;b&#x27;]</span><br></pre></td></tr></table></figure><h2 id="values-返回迭代器：返回键值对的value"><a href="#values-返回迭代器：返回键值对的value" class="headerlink" title="values() 返回迭代器：返回键值对的value"></a>values() 返回迭代器：返回键值对的value</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//数组</span><br><span class="line">const arr = [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;];</span><br><span class="line">for(let v of arr.values()) &#123;</span><br><span class="line">  console.log(v)</span><br><span class="line">&#125;</span><br><span class="line">//&#x27;a&#x27; &#x27;b&#x27; &#x27;c&#x27;</span><br><span class="line"> </span><br><span class="line">//Set</span><br><span class="line">const arr = new Set([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);</span><br><span class="line">for(let v of arr.values()) &#123;</span><br><span class="line">  console.log(v)</span><br><span class="line">&#125;</span><br><span class="line">// &#x27;a&#x27; &#x27;b&#x27; &#x27;c&#x27;</span><br><span class="line"> </span><br><span class="line">//Map</span><br><span class="line">const arr = new Map();</span><br><span class="line">arr.set(&#x27;a&#x27;, &#x27;a&#x27;);</span><br><span class="line">arr.set(&#x27;b&#x27;, &#x27;b&#x27;);</span><br><span class="line">for(let v of arr.values()) &#123;</span><br><span class="line">  console.log(v)</span><br><span class="line">&#125;</span><br><span class="line">// &#x27;a&#x27; &#x27;b&#x27;</span><br></pre></td></tr></table></figure><h2 id="keys-返回迭代器：返回键值对的key"><a href="#keys-返回迭代器：返回键值对的key" class="headerlink" title="keys() 返回迭代器：返回键值对的key"></a>keys() 返回迭代器：返回键值对的key</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//数组</span><br><span class="line">const arr = [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;];</span><br><span class="line">for(let v of arr.keys()) &#123;</span><br><span class="line">  console.log(v)</span><br><span class="line">&#125;</span><br><span class="line">// 0 1 2</span><br><span class="line"> </span><br><span class="line">//Set</span><br><span class="line">const arr = new Set([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);</span><br><span class="line">for(let v of arr.keys()) &#123;</span><br><span class="line">  console.log(v)</span><br><span class="line">&#125;</span><br><span class="line">// &#x27;a&#x27; &#x27;b&#x27; &#x27;c&#x27;</span><br><span class="line"> </span><br><span class="line">//Map</span><br><span class="line">const arr = new Map();</span><br><span class="line">arr.set(&#x27;a&#x27;, &#x27;a&#x27;);</span><br><span class="line">arr.set(&#x27;b&#x27;, &#x27;b&#x27;);</span><br><span class="line">for(let v of arr.keys()) &#123;</span><br><span class="line">  console.log(v)</span><br><span class="line">&#125;</span><br><span class="line">// &#x27;a&#x27; &#x27;b&#x27;</span><br></pre></td></tr></table></figure><h2 id="includes"><a href="#includes" class="headerlink" title="includes"></a>includes</h2><p>判断数组中是否存在该元素，参数：查找的值、起始位置，可以替换 ES5 时代的 indexOf 判断方式。indexOf 判断元素是否为 NaN，会判断错误。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a = [1, 2, 3];</span><br><span class="line">a.includes(2); // true</span><br><span class="line">a.includes(4); // false</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 编程学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>JS字符串和数组常用方法汇总</title>
+      <link href="/2023/05/29/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/"/>
+      <url>/2023/05/29/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/</url>
+      
+        <content type="html"><![CDATA[<h1 id="字符方法"><a href="#字符方法" class="headerlink" title="字符方法"></a>字符方法</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">// 1 字符方法</span><br><span class="line">charAt()    //获取指定位置处字符</span><br><span class="line">charCodeAt()  //获取指定位置处字符的ASCII码</span><br><span class="line"> </span><br><span class="line">// 2 字符串操作方法</span><br><span class="line">concat()   //拼接字符串，等效于+，+更常用</span><br><span class="line">slice()    //从start位置开始，截取到end位置，end取不到</span><br><span class="line">substring() //从start位置开始，截取到end位置，end取不到</span><br><span class="line">substr()   //从start位置开始，截取length个字符</span><br><span class="line"> </span><br><span class="line">// 3 位置方法</span><br><span class="line">indexOf()   //返回指定内容在元字符串中的位置，从前往后找第一个</span><br><span class="line">lastIndexOf() //从后往前找，只找第一个匹配的</span><br><span class="line"> </span><br><span class="line">// 4 去除空白   </span><br><span class="line">trim()  // 只能去除字符串前后的空白，字符串之间的空格不能去掉</span><br><span class="line"> </span><br><span class="line">// 5 大小写转换方法</span><br><span class="line">to(Locale)UpperCase() //转换大写</span><br><span class="line">to(Locale)LowerCase() //转换小写</span><br><span class="line"> </span><br><span class="line">// 6 其它</span><br><span class="line">search()  // 不存在返回-1，search支持正则。</span><br><span class="line">replace() // 替换</span><br><span class="line">split() // 返回数组</span><br><span class="line">fromCharCode()</span><br><span class="line">// String.fromCharCode(101, 102, 103); //把ASCII码转换成字符串</span><br></pre></td></tr></table></figure><h1 id="数组方法"><a href="#数组方法" class="headerlink" title="数组方法"></a>数组方法</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">//数组方法</span><br><span class="line"> </span><br><span class="line">push()，向数组的末尾添加一个或多个元素，并返回新的数组长度。原数组改变</span><br><span class="line"> </span><br><span class="line">pop()，删除并返回数组的最后一个元素，若该数组为空，则返回undefined。原数组改变</span><br><span class="line"> </span><br><span class="line">unshift()，向数组的开头添加一个或多个元素，并返回新的数组长度。原数组改变</span><br><span class="line"> </span><br><span class="line">shift()，删除数组的第一项，并返回第一个元素的值。若该数组为空，则返回undefined。原数组改变。</span><br><span class="line"> </span><br><span class="line">concat(arr1,arr2…)，合并两个或多个数组，生成一个新的数组。原数组不变</span><br><span class="line"> </span><br><span class="line">join()，将数组的每一项用指定字符连接形成一个字符串。默认连接字符为 “,” 逗号</span><br><span class="line"> </span><br><span class="line">reverse()，将数组倒序。原数组改变。</span><br><span class="line"> </span><br><span class="line">sort()，对数组元素进行排序。按照字符串UniCode码排序，原数组改变</span><br><span class="line"> </span><br><span class="line">map(function)，原数组的每一项执行函数后，返回一个新的数组。原数组不变</span><br><span class="line"> </span><br><span class="line">slice(start,end)，从start开始，end之前结束，不到end；如果不给end值，从start开始到数组结束。start可以给负值，-1表示数组最后位置，-2表示倒数第二个，以此类推，顾前不顾后。</span><br><span class="line"> </span><br><span class="line">splice(index,howmany,arr1,arr2…) ，删除元素并添加元素，从index位置开始删除howmany个元素，并将arr1、arr2…数据从index位置依次插入。howmany为0时，则不删除元素。原数组改变。</span><br><span class="line"> </span><br><span class="line">forEach(function)，用于调用数组的每个元素，并将元素传递给回调函数。原数组不变。（注意该方法和map的区别，若直接打印Array.forEach，结果为undefined）</span><br><span class="line"> </span><br><span class="line">filter(function)，过滤数组中，符合条件的元素并返回一个新的数组</span><br><span class="line"> </span><br><span class="line">every(function)，对数组中的每一项进行判断，若都符合则返回true，否则返回false。</span><br><span class="line"> </span><br><span class="line">Array.some(function)，对数组中的每一项进行判断，若都不符合则返回false，否则返回true。</span><br><span class="line"> </span><br><span class="line">Array.reduce(function)，reduce() 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 编程学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>js数组常用方法</title>
+      <link href="/2023/05/29/js%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/"/>
+      <url>/2023/05/29/js%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="for-in一般用于遍历对象的属性"><a href="#for-in一般用于遍历对象的属性" class="headerlink" title="for..in一般用于遍历对象的属性"></a>for..in一般用于遍历对象的属性</h2><ul><li>作用于数组的for in除了会遍历数组元素外,还会遍历自定义可枚举的属性,以及原型链上可枚举的属性;</li><li>作用于数组的for in的遍历结果是数组的索引,且都为字符串型,不能用于运算;</li><li>某些情况下,可能按照随机顺序遍历数组元素<div class="img-wrap"><div class="img-bg"><img class="img" src="https://pic-bed-img.aotuji.cn/img/list-for-in.png"/></div></div></li></ul><h2 id="for-of一般用于遍历对象的属性"><a href="#for-of一般用于遍历对象的属性" class="headerlink" title="for..of一般用于遍历对象的属性"></a>for..of一般用于遍历对象的属性</h2><ul><li>es6中添加的循环语法；</li><li>for of支持遍历数组、类对象(例如：DOM NodeList)、字符串、map对象、Set对象</li><li>.for of不支持遍历普通对象，可通过与Object.keys()搭配使用遍历（例子2）;</li><li>for of 遍历后的输出结果为数组元素的值；</li><li>搭配实例方法entries(),同时输出数组内容弄和索引<div class="img-wrap"><div class="img-bg"><img class="img" src="https://pic-bed-img.aotuji.cn/img/list-for-of.png"/></div></div></li></ul><h2 id="Object-keys"><a href="#Object-keys" class="headerlink" title="Object.keys()"></a>Object.keys()</h2><ul><li>遍历结果为对象自身可枚举属性组成的数组，数组中的属性名排列顺序与使用for in循环遍历该对象时返回的顺序一致，</li><li>与for in区别在于不能遍历出原型链上的属性<div class="img-wrap"><div class="img-bg"><img class="img" src="https://pic-bed-img.aotuji.cn/img/list-object.keys.png"/></div></div></li></ul><h2 id="Object-values"><a href="#Object-values" class="headerlink" title="Object.values()"></a>Object.values()</h2><ul><li>遍历结果为对象自身可枚举属性的值组成的数组，数组中的属性名排列顺序与使用for of循环遍历该对象时返回的顺序一致，</li><li>与for of区别在于不能遍历出原型链上的属性<div class="img-wrap"><div class="img-bg"><img class="img" src="https://pic-bed-img.aotuji.cn/img/list-object.values.png"/></div></div></li></ul><h2 id="Object-entries"><a href="#Object-entries" class="headerlink" title="Object.entries()"></a>Object.entries()</h2><ul><li>返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值对数组。(相当于Object.keys()和Object.values()的结合)<div class="img-wrap"><div class="img-bg"><img class="img" src="https://pic-bed-img.aotuji.cn/img/list-object.entries.png"/></div></div></li></ul><h2 id="reduce-func-cur-gt-return-…"><a href="#reduce-func-cur-gt-return-…" class="headerlink" title="reduce((func,cur)=&gt;{return …},[])"></a>reduce((func,cur)=&gt;{return …},[])</h2><ul><li><p>我遇到的情况比较多的是两个参数,第一个参数代表<a href="不局限于[]，什么都可以，这里只是一个例子"></a>，cur代表的是遍历的数组中的各个元素…算了大家别看我写的这个了，我自己也就勉勉强强能理解，你们直接去链接吧。</p><p>对于这个方法了解较少，所以详情大家可以参照链接</p><div class="reference-source"><span class="hidden-anchor" id="referfrom_[1]"></span><a class="reference-anchor" href="#referto_[1]">[1]<div class="reference-anchor-up fa-solid fa-angles-up"></div></a><a class="reference-link" href="https://cloud.tencent.com/developer/section/1191538">array.reduce (Array) - JavaScript 中文开发手册 - 开发者手册 - 云+社区 - 腾讯云 (tencent.com)</a></div></li></ul><h2 id="array-indexOf"><a href="#array-indexOf" class="headerlink" title="array.indexOf()"></a>array.indexOf()</h2><ul><li>判断是否含有某个元素，返回值为索引，若没有返回-1</li></ul><h2 id="array-includes"><a href="#array-includes" class="headerlink" title="array.includes()"></a>array.includes()</h2><ul><li>判断是否含有某个元素，返回值true或false</li></ul><h2 id="array-fill"><a href="#array-fill" class="headerlink" title="array.fill()"></a>array.fill()</h2><ul><li>作用是使用一个固定值来替换数组中的元素。该固定值可以是字母、数字、字符串、数组等等。fill()方法还有两个可选参数，表示填充的起始位置和结束位置。<div class="img-wrap"><div class="img-bg"><img class="img" src="https://pic-bed-img.aotuji.cn/img/list-array.fill-1.png"/></div></div><div class="img-wrap"><div class="img-bg"><img class="img" src="https://pic-bed-img.aotuji.cn/img/list-array.fill-2.png"/></div></div><div class="img-wrap"><div class="img-bg"><img class="img" src="https://pic-bed-img.aotuji.cn/img/list-array.fill-3.png"/></div></div><div class="img-wrap"><div class="img-bg"><img class="img" src="https://pic-bed-img.aotuji.cn/img/list-array.fill-4.png"/></div></div></li></ul><h2 id="array-push-a"><a href="#array-push-a" class="headerlink" title="array.push(a)"></a>array.push(a)</h2><ul><li>从数组尾部添加一个元素</li></ul><h2 id="array-pop"><a href="#array-pop" class="headerlink" title="array.pop()"></a>array.pop()</h2><ul><li>从数组尾部删除一个元素，返回被删除的元素</li></ul><h2 id="array-shift"><a href="#array-shift" class="headerlink" title="array.shift()"></a>array.shift()</h2><ul><li>从数组头部删除一个元素，返回被删除的元素</li></ul><h2 id="array-unshift-a"><a href="#array-unshift-a" class="headerlink" title="array.unshift(a)"></a>array.unshift(a)</h2><ul><li>从数组头部添加一个元素</li></ul><h2 id="array-concat-a-b"><a href="#array-concat-a-b" class="headerlink" title="array.concat(a,b)"></a>array.concat(a,b)</h2><ul><li>合并数组a，b返回新数组，不影响原数组</li></ul><h2 id="array-splice"><a href="#array-splice" class="headerlink" title="array.splice()"></a>array.splice()</h2><ul><li><p>可以在指定位置删除或者添加指定元素</p><p>若删除元素</p><p>两个参数：第一个参数为删除的数量，第二个参数为开始删除的位置</p><p>若添加元素</p><p>参数：第一个元素为添加的数量，第二个参数为0（表示不删除元素），后续为要添加的具体元素</p></li></ul><h2 id="array-slice"><a href="#array-slice" class="headerlink" title="array.slice()"></a>array.slice()</h2><ul><li>截取指定位置的元素并返回<br>两个参数：开始位置和结束位置</li></ul><h2 id="array-reverse"><a href="#array-reverse" class="headerlink" title="array.reverse()"></a>array.reverse()</h2><ul><li>反转原数组</li></ul><h2 id="array-join"><a href="#array-join" class="headerlink" title="array.join()"></a>array.join()</h2><ul><li>通过指定的分隔符(参数)将数组转化为字符串。</li></ul><h1 id="字符串（字符串也可以视为数组，运用数组中的一些方法）"><a href="#字符串（字符串也可以视为数组，运用数组中的一些方法）" class="headerlink" title="字符串（字符串也可以视为数组，运用数组中的一些方法）"></a>字符串（字符串也可以视为数组，运用数组中的一些方法）</h1><h2 id="repeat方法"><a href="#repeat方法" class="headerlink" title="repeat方法"></a>repeat方法</h2><ul><li>将指定的字符串重复一定次数<div class="img-wrap"><div class="img-bg"><img class="img" src="https://pic-bed-img.aotuji.cn/img/string-repeat.png"/></div></div></li></ul><h2 id="trim方法"><a href="#trim方法" class="headerlink" title="trim方法"></a>trim方法</h2><ul><li>去除字符串前后的空格</li></ul><h2 id="toLowerCase方法"><a href="#toLowerCase方法" class="headerlink" title="toLowerCase方法"></a>toLowerCase方法</h2><ul><li>将字符串转换为小写</li></ul><h2 id="toUpperCase方法"><a href="#toUpperCase方法" class="headerlink" title="toUpperCase方法"></a>toUpperCase方法</h2><ul><li>将字符串转换为大写</li></ul><h2 id="replace方法"><a href="#replace方法" class="headerlink" title="replace方法"></a>replace方法</h2><ul><li>将指定字符串替换为另外字符串</li></ul><h2 id="split方法"><a href="#split方法" class="headerlink" title="split方法"></a>split方法</h2><ul><li>通过指定的分隔符(参数)将字符串转化为数组。</li></ul><h2 id="match方法"><a href="#match方法" class="headerlink" title="match方法"></a>match方法</h2><ul><li>在字符串中寻找指定字符串或正则，返回找到的字符串</li></ul><h2 id="search方法"><a href="#search方法" class="headerlink" title="search方法"></a>search方法</h2><ul><li>在字符串中寻找指定字符串或正则，返回第一个找到的字符串开始的位置</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 编程学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>vuex学习笔记</title>
       <link href="/2023/05/12/vuex%E5%AD%A6%E4%B9%A0/"/>
       <url>/2023/05/12/vuex%E5%AD%A6%E4%B9%A0/</url>
@@ -79,6 +204,56 @@
     
     
     <entry>
+      <title>前端三剑客</title>
+      <link href="/2023/05/10/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2-1/"/>
+      <url>/2023/05/10/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2-1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="html的标签很重要的"><a href="#html的标签很重要的" class="headerlink" title="html的标签很重要的"></a>html的标签很重要的</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端三剑客 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 前端三剑客 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>日常的生活</title>
+      <link href="/2023/05/10/%E6%97%A5%E5%B8%B8%E7%9A%84%E7%94%9F%E6%B4%BB-1/"/>
+      <url>/2023/05/10/%E6%97%A5%E5%B8%B8%E7%9A%84%E7%94%9F%E6%B4%BB-1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="html的标签很重要的"><a href="#html的标签很重要的" class="headerlink" title="html的标签很重要的"></a>html的标签很重要的</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> 日常的生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 日常的生活 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>胡思乱想</title>
       <link href="/2023/05/10/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3-1/"/>
       <url>/2023/05/10/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3-1/</url>
@@ -121,56 +296,6 @@
         <tags>
             
             <tag> 编程学习 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>日常的生活</title>
-      <link href="/2023/05/10/%E6%97%A5%E5%B8%B8%E7%9A%84%E7%94%9F%E6%B4%BB-1/"/>
-      <url>/2023/05/10/%E6%97%A5%E5%B8%B8%E7%9A%84%E7%94%9F%E6%B4%BB-1/</url>
-      
-        <content type="html"><![CDATA[<h2 id="html的标签很重要的"><a href="#html的标签很重要的" class="headerlink" title="html的标签很重要的"></a>html的标签很重要的</h2>]]></content>
-      
-      
-      <categories>
-          
-          <category> 日常的生活 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 日常的生活 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>前端三剑客</title>
-      <link href="/2023/05/10/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2-1/"/>
-      <url>/2023/05/10/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2-1/</url>
-      
-        <content type="html"><![CDATA[<h2 id="html的标签很重要的"><a href="#html的标签很重要的" class="headerlink" title="html的标签很重要的"></a>html的标签很重要的</h2>]]></content>
-      
-      
-      <categories>
-          
-          <category> 前端三剑客 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 前端三剑客 </tag>
             
         </tags>
       
