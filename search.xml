@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>qs插件</title>
+      <link href="/2023/05/29/qs%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8/"/>
+      <url>/2023/05/29/qs%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<h1 id="vue后台传参出现问题"><a href="#vue后台传参出现问题" class="headerlink" title="vue后台传参出现问题"></a>vue后台传参出现问题</h1><ul><li>在添加表单按钮post传参时无法正常的传递数据。之后通过搜索发现原因是传递参数要将参数序列化。<br>使用第三方工具qs来处理参数。</li></ul><h1 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h1><h2 id="首先先下载："><a href="#首先先下载：" class="headerlink" title="首先先下载："></a>首先先下载：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i qs </span><br></pre></td></tr></table></figure><h2 id="引入-："><a href="#引入-：" class="headerlink" title="引入 ："></a>引入 ：</h2><p>main.js<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import qs from &#x27;qs&#x27;</span><br><span class="line">Vue.use(qs)</span><br></pre></td></tr></table></figure></p><h2 id="组件使用"><a href="#组件使用" class="headerlink" title="组件使用"></a>组件使用</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import qs from &#x27;qs&#x27;</span><br></pre></td></tr></table></figure><h2 id="qs主要有两个方法-："><a href="#qs主要有两个方法-：" class="headerlink" title="qs主要有两个方法 ："></a>qs主要有两个方法 ：</h2><div class="tabs" id="方法一"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#方法一-1">方法一 1</button></li><li class="tab"><button type="button" data-href="#方法一-2">方法二</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="方法一-1"><p>将对象序列化成URL的形式，多个对象之间用&amp;拼接（拼接是由底层处理，无需手动操作）<br>qs.stringify() 转换成查询字符串<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let qsdata = qs.stringify(&#123;</span><br><span class="line">     username: &quot;coderkey&quot;,</span><br><span class="line">     password: &quot;123456&quot;,</span><br><span class="line"> &#125;);</span><br><span class="line">  // username=coderkey&amp;password=123456</span><br></pre></td></tr></table></figure></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="方法一-2"><p>将URL解析成对象的形式（将序列化的内容拆分成一个个单一的对象）<br>qs.parse() 转换成json对象<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let qsdata = qs.parse(&#123;</span><br><span class="line">     &quot;username&quot;: &quot;coderkey&quot;,</span><br><span class="line">     &quot;password&quot;: &quot;123456&quot;,</span><br><span class="line"> &#125;);</span><br><span class="line">// &#123;username: &#x27;coderkey&#x27;, password: &#x27;123456&#x27;&#125;</span><br></pre></td></tr></table></figure></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div><h2 id="vue中post传参数据为空：可以用下面的方法解决"><a href="#vue中post传参数据为空：可以用下面的方法解决" class="headerlink" title="vue中post传参数据为空：可以用下面的方法解决"></a>vue中post传参数据为空：可以用下面的方法解决</h2><p>组件引入：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import qs from &#x27;qs’</span><br></pre></td></tr></table></figure><br>使用：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qs.parse(qs.stringify(数据))</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 编程学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vue3封装storage实现token验证</title>
+      <link href="/2023/05/29/vue3%E5%B0%81%E8%A3%85storage%E5%AE%9E%E7%8E%B0token%E9%AA%8C%E8%AF%81/"/>
+      <url>/2023/05/29/vue3%E5%B0%81%E8%A3%85storage%E5%AE%9E%E7%8E%B0token%E9%AA%8C%E8%AF%81/</url>
+      
+        <content type="html"><![CDATA[<h2 id="验证思路"><a href="#验证思路" class="headerlink" title="验证思路"></a>验证思路</h2><ul><li>登录成功返回 token</li><li>拿到token，将token存储到localStorage，并跳转路由页面</li><li>跳转路由，就判断 localStroage 中有无 token</li><li>调后端接口，都要在请求头中加token</li><li>前端拿到状态码为401，就清除token信息并跳转到登录页面</li></ul><h2 id="storage封装"><a href="#storage封装" class="headerlink" title="storage封装"></a>storage封装</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 封装操作localstorage本地存储的方法</span><br><span class="line"> */</span><br><span class="line">export const storage = &#123;</span><br><span class="line">  //存储</span><br><span class="line">  set(key: string, value: any) &#123;</span><br><span class="line">    localStorage.setItem(key, JSON.stringify(value))</span><br><span class="line">  &#125;,</span><br><span class="line">  //取出数据</span><br><span class="line">  get&lt;T&gt;(key: string) &#123;</span><br><span class="line">    const value = localStorage.getItem(key)</span><br><span class="line">    if (value &amp;&amp; value != &quot;undefined&quot; &amp;&amp; value != &quot;null&quot;) &#123;</span><br><span class="line">      return &lt;T&gt;JSON.parse(value)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  // 删除数据</span><br><span class="line">  remove(key: string) &#123;</span><br><span class="line">    localStorage.removeItem(key)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 封装操作sessionStorage本地存储的方法</span><br><span class="line"> */</span><br><span class="line">export const sessionStorage = &#123;</span><br><span class="line">  //存储</span><br><span class="line">  set(key: string, value: any) &#123;</span><br><span class="line">    window.sessionStorage.setItem(key, JSON.stringify(value))</span><br><span class="line">  &#125;,</span><br><span class="line">  //取出数据</span><br><span class="line">  get&lt;T&gt;(key: string) &#123;</span><br><span class="line">    const value = window.sessionStorage.getItem(key)</span><br><span class="line">    if (value &amp;&amp; value != &quot;undefined&quot; &amp;&amp; value != &quot;null&quot;) &#123;</span><br><span class="line">      return JSON.parse(value)</span><br><span class="line">    &#125;</span><br><span class="line">    return null</span><br><span class="line">  &#125;,</span><br><span class="line">  // 删除数据</span><br><span class="line">  remove(key: string) &#123;</span><br><span class="line">    window.sessionStorage.removeItem(key)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="login-vue"><a href="#login-vue" class="headerlink" title="login.vue"></a>login.vue</h2><p>登录成功后进行token保存<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup lang=&quot;ts&quot;&gt;</span><br><span class="line">import &#123; Routers &#125; from &#x27;@/hooks/routers&#x27;</span><br><span class="line">import &#123; user &#125; from &#x27;@/api/index&#x27;</span><br><span class="line">import &#123; reactive &#125; from &#x27;vue&#x27;</span><br><span class="line">import &#123; useStore &#125; from &#x27;vuex&#x27;</span><br><span class="line">import &#123; storage &#125; from &#x27;@/utils/storage/storage&#x27;</span><br><span class="line">const stores = useStore()</span><br><span class="line">const state = reactive(&#123;</span><br><span class="line">  user: &#x27;kai&#x27;,</span><br><span class="line">  pwd: &#x27;kai&#x27;,</span><br><span class="line">  result: [],</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">async function login() &#123;</span><br><span class="line">  user.Login(state.user, state.pwd).then((res) =&gt; &#123;</span><br><span class="line">    state.result = res.data.split(&#x27;,&#x27;)</span><br><span class="line">    if (state.result[0] === &#x27;1&#x27;) &#123;</span><br><span class="line">      storage.set(&#x27;token&#x27;, &#x27;Bearer &#x27; + state.result[1])</span><br><span class="line">      Routers(&#x27;/Admin-index/ArticleTable&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p><h2 id="axios-ts"><a href="#axios-ts" class="headerlink" title="axios.ts"></a>axios.ts</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 添加请求拦截器</span><br><span class="line">axios.interceptors.request.use(function (config) &#123;</span><br><span class="line">  if (</span><br><span class="line">    config.method === &quot;post&quot; ||</span><br><span class="line">    config.method === &quot;put&quot; ||</span><br><span class="line">    config.method === &quot;delete&quot;</span><br><span class="line">  ) &#123;</span><br><span class="line">    // qs序列化</span><br><span class="line">    config.data = qs.parse(config.data);</span><br><span class="line">  &#125;</span><br><span class="line">  // 鉴权token , 给头部带上token</span><br><span class="line">  if (storage.get(&#x27;token&#x27;)) &#123;</span><br><span class="line">    config.headers.Authorization = storage.get(&#x27;token&#x27;);</span><br><span class="line">    console.log(&#x27;%c [  config.headers.Authorization ]&#x27;, &#x27;font-size:13px; background:pink; color:#bf2c9f;&#x27;, config.headers.Authorization)</span><br><span class="line">  &#125;</span><br><span class="line">  return config;</span><br><span class="line">&#125;, error =&gt; &#123;</span><br><span class="line">  return Promise.reject(error.data.error.message);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h2 id="全局前置守卫"><a href="#全局前置守卫" class="headerlink" title="全局前置守卫"></a>全局前置守卫</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 导航守卫</span><br><span class="line">// 使用 router.beforeEach 注册一个全局前置守卫，判断用户是否登陆</span><br><span class="line">router.beforeEach((to, from, next) =&gt; &#123;</span><br><span class="line">  if (to.path === &quot;/Login&quot;) &#123;</span><br><span class="line">    next();</span><br><span class="line">  &#125; else &#123;</span><br><span class="line"></span><br><span class="line">    const token = storage.get(&#x27;token&#x27;)</span><br><span class="line">    if (token === undefined || token === &quot;&quot;) &#123;</span><br><span class="line">      next(&quot;/Login&quot;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      next();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><div class="reference-source"><span class="hidden-anchor" id="referfrom_[1]"></span><a class="reference-anchor" href="#referto_[1]">[1]<div class="reference-anchor-up fa-solid fa-angles-up"></div></a><a class="reference-link" href="https://www.cnblogs.com/ouyangkai/p/15424713.html">原文地址</a></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 编程学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>uni-app的小知识</title>
       <link href="/2023/05/29/uni-app%E7%9A%84%E5%B0%8F%E7%9F%A5%E8%AF%86/"/>
       <url>/2023/05/29/uni-app%E7%9A%84%E5%B0%8F%E7%9F%A5%E8%AF%86/</url>
@@ -179,23 +229,23 @@
     
     
     <entry>
-      <title>什么叫C#</title>
-      <link href="/2023/05/10/%E4%BB%80%E4%B9%88%E5%8F%ABC/"/>
-      <url>/2023/05/10/%E4%BB%80%E4%B9%88%E5%8F%ABC/</url>
+      <title>日常的生活</title>
+      <link href="/2023/05/10/%E6%97%A5%E5%B8%B8%E7%9A%84%E7%94%9F%E6%B4%BB-1/"/>
+      <url>/2023/05/10/%E6%97%A5%E5%B8%B8%E7%9A%84%E7%94%9F%E6%B4%BB-1/</url>
       
         <content type="html"><![CDATA[<h2 id="html的标签很重要的"><a href="#html的标签很重要的" class="headerlink" title="html的标签很重要的"></a>html的标签很重要的</h2>]]></content>
       
       
       <categories>
           
-          <category> 什么叫C# </category>
+          <category> 日常的生活 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 什么叫C# </tag>
+            <tag> 日常的生活 </tag>
             
         </tags>
       
@@ -229,23 +279,23 @@
     
     
     <entry>
-      <title>日常的生活</title>
-      <link href="/2023/05/10/%E6%97%A5%E5%B8%B8%E7%9A%84%E7%94%9F%E6%B4%BB-1/"/>
-      <url>/2023/05/10/%E6%97%A5%E5%B8%B8%E7%9A%84%E7%94%9F%E6%B4%BB-1/</url>
+      <title>什么叫C#</title>
+      <link href="/2023/05/10/%E4%BB%80%E4%B9%88%E5%8F%ABC/"/>
+      <url>/2023/05/10/%E4%BB%80%E4%B9%88%E5%8F%ABC/</url>
       
         <content type="html"><![CDATA[<h2 id="html的标签很重要的"><a href="#html的标签很重要的" class="headerlink" title="html的标签很重要的"></a>html的标签很重要的</h2>]]></content>
       
       
       <categories>
           
-          <category> 日常的生活 </category>
+          <category> 什么叫C# </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 日常的生活 </tag>
+            <tag> 什么叫C# </tag>
             
         </tags>
       
